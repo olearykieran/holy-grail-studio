@@ -53,6 +53,11 @@ export default function ThreeScene() {
       camera.position.z = 30 + t * -0.01;
       camera.position.x = t * -0.0002;
       camera.position.y = t * -0.0002;
+
+      // Add twist animation based on scroll position
+      if (holyGrail) {
+        holyGrail.rotation.z = t * -0.001; // Example twist animation
+      }
     }
     document.body.onscroll = moveCamera;
 
@@ -60,6 +65,11 @@ export default function ThreeScene() {
       requestAnimationFrame(animate);
       controls.update();
       renderer.render(scene, camera);
+
+      // Add movement animation based on scroll position
+      if (holyGrail) {
+        holyGrail.position.x = -t * 0.01; // Example horizontal movement animation
+      }
     }
     animate();
   }, []);
